@@ -38,7 +38,7 @@ RUN apk add --no-cache ca-certificates
 COPY --from=builder /app/httptester /httptester
 
 # Run the web service on container startup.
-CMD ["/helloworld"]
+CMD ["/httptester"]
 
 # 执行docker build构建镜像
-# docker build -t eventing-test/helloworld .
+# docker build -t tektoncd-test/httptester .
