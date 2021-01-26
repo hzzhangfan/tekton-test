@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httptester
+  namespace: myci
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &labels
+      app: httptester
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: httptester
+          image: registry.cn-hangzhou.aliyuncs.com/hzzhangfan/test:0.0.1
+          imagePullPolicy: IfNotPresent
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: httptester
+  namespace: myci
+spec:
+  selector:
+    app: httptester
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
