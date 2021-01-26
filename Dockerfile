@@ -16,7 +16,7 @@ COPY . ./
 
 # Build the binary.
 # -mod=readonly ensures immutable go.mod and go.sum in container builds.
-RUN CGO_ENABLED=0 GOOS=linux GOPROXY="https://goproxy.cn",direct go build -mod=readonly  -v -o helloworld
+RUN CGO_ENABLED=0 GOOS=linux GOPROXY="https://goproxy.cn",direct go build -mod=readonly  -v -o httptester
 
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
