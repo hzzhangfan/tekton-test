@@ -16,6 +16,10 @@ spec:
         - name: httptester
           image: registry.cn-hangzhou.aliyuncs.com/hzzhangfan/test:0.0.1
           imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: 1
+              memory: 50Mi
 ---
 kind: Service
 apiVersion: v1
