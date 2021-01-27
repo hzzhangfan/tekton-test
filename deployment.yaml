@@ -19,7 +19,9 @@ spec:
           resources:
             limits:
               cpu: 1
-              memory: 50Mi
+              memory: 20Mi
+      imagePullSecrets:
+      - name: dockerhub
 ---
 kind: Service
 apiVersion: v1
