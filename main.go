@@ -17,5 +17,5 @@ func main() {
 
 func testHandle(req *restful.Request, resp *restful.Response) {
 	log.Printf("processing test request....")
-	io.WriteString(resp, "hello happyman")
+	io.WriteString(resp, "hello happyman\n")
 }
