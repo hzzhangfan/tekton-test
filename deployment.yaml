@@ -35,23 +35,14 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
----      
+---
 # 发布到Ingress,便于外部访问
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
+apiVersion: getambassador.io/v1
+kind:  Mapping
 metadata:
-  name: tektoncd-httptester-ingress
+  name: httptester-mapping
   namespace: myci
-  annotations:
-    kubernetes.io/ingress.class: "ambassador"
-    # ambassador.ingress.kubernetes.io/use-regex: "true"
-    # ambassador.ingress.kubernetes.io/rewrite-target: /
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /httptester
-        backend:
-          serviceName: httptester
-          servicePort: 80
----      
+  prefix: /httptester/
+  service: httptester.myci:80
+  use_websocket: true 
